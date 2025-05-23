@@ -21,5 +21,5 @@ go get github.com/joho/godotenv`
 5. Build `go build .`
 6. Test `./go-rss-mailer`
 7. Add combiled task to cron job `crontab -e`
-  - # Fetch RSS feeds every hour at 15 past the hour: make sure path is correct
+  - Fetch RSS feeds every hour at 15 past the hour: make sure path is correct
 `15 * * * * cd /home/jevonx/go-rss-mailer && ./go-rss-mailer >> /home/jevonx/go-rss-mailer/mailer.log 2>&1`
