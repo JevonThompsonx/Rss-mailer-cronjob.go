@@ -1,23 +1,24 @@
-# cronJobs
-cron jobs for one of my servers that would be useful for me. Right now it'll be just rss emails but who knows 
+# RSS Mailer Cron Job
 
-## prereqs 
-- go is setup and ready to use: [link to setup](https://docs.google.com/document/d/1QkiZEAUWcW6f5Ep73_DzvOcPKxTvfwbZX0M-cO0Id90/edit?usp=sharing)
+This repository contains a Go application designed to be run as a cron job. It fetches articles from a list of RSS/Atom feeds, checks for new entries since the last run, and emails a digest of the new articles to a specified address.
+
+## Prerequisites
+
+* A Linux server (tested on Debian 12).
+* Go (version 1.20+) is installed and configured in your `$PATH`. You can find installation instructions on the [official Go website](https://go.dev/doc/install) or [here]([link to setup](https://docs.google.com/document/d/1QkiZEAUWcW6f5Ep73_DzvOcPKxTvfwbZX0M-cO0Id90/edit?usp=sharing).
+* An email account that can be used for sending mail via SMTP. If using Gmail, you must set up a 2-Factor Authentication and create an [App Password](https://support.google.com/accounts/answer/185833).
+
+## Installation and Setup
+
+Follow these steps to get the service running.
 
 ## Use
 1. git clone repo
 2. cd into repo `cd cronJobs`
-3. `go mod init go-rss-mailer`
+3. `go mod init go-rss-mailer` - first time use only. I'll add the needed mod file to the repo afterwards
 4. Add a email and password login to a .env file, use app passwords if possible. Google provides app passwords. It might be a good idea to create a totally new email just for this sort of automated messaging
-  - `nano .env`
-  - ```
-    # .env file for SMTP Credentials
-    SMTP_USERNAME="your-email@gmail.com"
-    SMTP_PASSWORD="your-gmail-app-password"
-    ```
-5. Go get needed dotenv repo: `# In ~/go-rss-mailer
-go get github.com/joho/godotenv`
-6. tidy: `go mod tidy`
+   - `cp .env.example .env && nano .env`
+5. tidy: `go mod tidy` - gets required files
 5. Build `go build .`
 6. Test `./go-rss-mailer`
 7. Add combiled task to cron job `crontab -e`
