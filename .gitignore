@@ -21,5 +21,14 @@
 go.work
 go.work.sum
 
-# env file
+# Ignore the .env file containing secrets
 .env
+
+# Ignore the compiled binary
+go-rss-mailer
+
+# Ignore the state file
+sent_items.json
+
+# Ignore log files
+*.log
