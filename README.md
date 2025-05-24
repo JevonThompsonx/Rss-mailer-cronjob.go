@@ -15,10 +15,9 @@ Follow these steps to get the service running.
 ## Use
 1. git clone repo
 2. cd into repo `cd cronJobs`
-3. `go mod init go-rss-mailer` - first time use only. I'll add the needed mod file to the repo afterwards
-4. Add a email and password login to a .env file, use app passwords if possible. Google provides app passwords. It might be a good idea to create a totally new email just for this sort of automated messaging
+3. Add a email and password login to a .env file, use app passwords if possible. Google provides app passwords. It might be a good idea to create a totally new email just for this sort of automated messaging
    - `cp .env.example .env && nano .env`
-5. tidy: `go mod tidy` - gets required files
+4. tidy/get required modules: `go mod tidy`
 5. Build `go build .`
 6. Test `./go-rss-mailer`
 7. Add combiled task to cron job `crontab -e`
