@@ -23,3 +23,8 @@ Follow these steps to get the service running.
 7. Add combiled task to cron job `crontab -e`
   - Fetch RSS feeds every hour at 15 past the hour: make sure path is correct
 `15 * * * * cd /home/jevonx/go-rss-mailer && ./go-rss-mailer >> /home/jevonx/go-rss-mailer/mailer.log 2>&1`
+
+### Talking to myself...
+
+This project can be used on a server or on my most used machine. I can clone it, install using `go install .` then add it as a startup command to my shell. 
+For now, it might be most useful on my most used machine since I don't yet have a extremely low powered server I'd want to add this to. I could just get a pi tho
