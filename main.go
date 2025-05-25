@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/jordan-wright/email"
-	"github.com/joho/godotenv" // <-- ADDED: For loading .env file
+	"github.com/joho/godotenv"
 	"github.com/mmcdole/gofeed"
 )
 
