@@ -4,8 +4,7 @@
   "to_email": "destination-email@example.com",
   "from_email": "Go News Bot <your-email@gmail.com>",
   "feed_urls": [
-     "https://www.phoronix.com/rss.php", - add new ones
-      "https://hnrss.org/frontpage", - add new ones
-      "https://www.theverge.com/rss/index.xml" - add new ones
+     "https://nextcloud.com/feed"
+     "https://www.theverge.com/rss/index.xml"
   ]
 }
