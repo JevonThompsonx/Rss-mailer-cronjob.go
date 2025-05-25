@@ -6,6 +6,9 @@
   "feed_urls": [
      "https://nextcloud.com/feed"
     "https://github.blog/feed/"
-     "https://www.theverge.com/rss/index.xml"
+     "https://www.intc.com/news-events/press-releases/rss"
+    "https://feeds.feedburner.com/nvidiablog"
+    "https://developer.nvidia.com/blog/feed"
+    "https://community.amd.com/sdtpp67534/rss/board?board.id=gaming-blogs"
   ]
 }
