@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"math/rand"
 	"net/smtp"
 	"os"
-	"sort"
 	"strings"
 	"time"
 
@@ -24,7 +24,6 @@ type Config struct {
 	FeedURLs   []string `json:"feed_urls"`
 }
 
-// State struct remains the same
 type State struct {
 	SentGUIDs map[string]bool `json:"sent_guids"`
 }
@@ -79,12 +78,14 @@ func main() {
 
 	fmt.Printf("Found %d new articles. Preparing email...\n", len(newItems))
 
-	sort.Slice(newItems, func(i, j int) bool {
-		if newItems[i].PublishedParsed == nil || newItems[j].PublishedParsed == nil {
-			return false
-		}
-		return newItems[i].PublishedParsed.Before(*newItems[j].PublishedParsed)
+	// --- CHANGE: Randomize the order of new articles ---
+	// Seed the random number generator to ensure different order each time.
+	rand.Seed(time.Now().UnixNano())
+	// Shuffle the slice of new items in place.
+	rand.Shuffle(len(newItems), func(i, j int) {
+		newItems[i], newItems[j] = newItems[j], newItems[i]
 	})
+	// --- END CHANGE ---
 
 	// 5. Get SMTP credentials from environment
 	smtpUser := os.Getenv("SMTP_USERNAME")
@@ -142,11 +143,17 @@ func saveState(path string, state *State) error {
 	return os.WriteFile(path, data, 0644)
 }
 
-// sendEmail function now accepts credentials as arguments
 func sendEmail(config *Config, user, pass string, items []*gofeed.Item) error {
 	var body strings.Builder
 	body.WriteString("<h1>Your News Digest</h1>")
 	for _, item := range items {
+		// This part remains unchanged, but now processes items in random order.
+		var publishedDate string
+		if item.PublishedParsed != nil {
+			publishedDate = item.PublishedParsed.Format(time.RFC822)
+		} else {
+			publishedDate = "N/A"
+		}
 		body.WriteString(fmt.Sprintf(
 			`
 			<hr>
@@ -156,7 +163,7 @@ func sendEmail(config *Config, user, pass string, items []*gofeed.Item) error {
 			`,
 			template.HTMLEscapeString(item.Link),
 			template.HTMLEscapeString(item.Title),
-			item.PublishedParsed.Format(time.RFC822),
+			publishedDate,
 			item.Description,
 		))
 	}
