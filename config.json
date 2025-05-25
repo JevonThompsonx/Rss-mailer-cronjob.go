@@ -4,12 +4,12 @@
   "to_email": "destination-email@example.com",
   "from_email": "Go News Bot <your-email@gmail.com>",
   "feed_urls": [
-     "https://nextcloud.com/feed"
-    "https://github.blog/feed/"
-     "https://www.intc.com/news-events/press-releases/rss"
-    "https://feeds.feedburner.com/nvidiablog"
-    "https://developer.nvidia.com/blog/feed"
-    "https://community.amd.com/sdtpp67534/rss/board?board.id=gaming-blogs"
+    "https://nextcloud.com/feed",
+    "https://github.blog/feed/",
+    "https://www.intc.com/news-events/press-releases/rss",
+    "https://feeds.feedburner.com/nvidiablog",
+    "https://developer.nvidia.com/blog/feed",
+    "https://community.amd.com/sdtpp67534/rss/board?board.id=gaming-blogs",
     "https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=atom&categories=Published&notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&namespace=0&count=30&hourcount=124&ordermethod=categoryadd&stablepages=only" 
   ]
 }
