@@ -5,6 +5,7 @@
   "from_email": "Go News Bot <your-email@gmail.com>",
   "feed_urls": [
      "https://nextcloud.com/feed"
+    "https://github.blog/feed/"
      "https://www.theverge.com/rss/index.xml"
   ]
 }
